@@ -32,4 +32,17 @@ public class GoogleSearch_StepDefinitions {
         Assert.assertEquals("Title verification is failed!", expectedTitle, actualTitle);
 
     }
+
+    @When("user types {string} in the google search box and clicks enter")
+    public void userTypesInTheGoogleSearchBoxAndClicksEnter(String searchkeyword) {
+        googleSearchPage.searchBox.sendKeys(searchkeyword + Keys.ENTER);
+    }
+
+    @Then("user sees {string} is in the google title")
+    public void userSeesIsInTheGoogleTitle(String expectedTitle) {
+
+        String actualTitle = Driver.getDriver().getTitle();
+
+        Assert.assertEquals(expectedTitle, actualTitle);
+    }
 }
